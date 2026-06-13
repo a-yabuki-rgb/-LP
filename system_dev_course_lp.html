@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>システム開発講座 入門・基礎・応用 | 受講生募集中</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+    background: #f5f7f2;
+    color: #1a1a1a;
+    padding: 1.5rem 1rem 3rem;
+  }
+  .lp { max-width: 680px; margin: 0 auto; }
+
+  /* hero */
+  .hero { border-radius: 16px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid #cdddb8; }
+  .hero-img { width: 100%; display: block; }
+  .hero-body { padding: 1.5rem; text-align: center; background: #f0f7e8; }
+  .hero-free-badge {
+    display: inline-block; background: #EAF3DE; color: #3B6D11;
+    font-size: 13px; font-weight: 600; padding: 5px 16px;
+    border-radius: 999px; margin-bottom: 0.875rem; border: 1px solid #97C459;
+  }
+  .hero-tag { font-size: 12px; color: #639922; margin-bottom: 0.4rem; }
+  .hero-title { font-size: 26px; font-weight: 700; color: #1a1a1a; line-height: 1.35; margin-bottom: 0.75rem; }
+  .hero-title .accent { color: #3B6D11; }
+  .hero-catch { font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 1rem; }
+  .hero-points { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+  .hero-point {
+    font-size: 12px; background: #fff; border: 1px solid #cdddb8;
+    color: #3B6D11; padding: 4px 12px; border-radius: 999px; font-weight: 500;
+  }
+
+  /* merit */
+  .merit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem; }
+  .merit-card { background: #fff; border: 1px solid #cdddb8; border-radius: 14px; overflow: hidden; }
+  .merit-thumb { width: 100%; display: block; }
+  .merit-pad { padding: 0.875rem; text-align: center; }
+  .merit-title { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; line-height: 1.4; }
+  .merit-desc { font-size: 12px; color: #666; line-height: 1.5; }
+
+  /* section label */
+  .section-label {
+    font-size: 14px; font-weight: 600; color: #3B6D11;
+    margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 4px; height: 18px;
+    background: #639922; border-radius: 2px;
+  }
+
+  /* timeline */
+  .timeline { margin-bottom: 1.5rem; }
+  .tl-item { display: grid; grid-template-columns: 80px 1fr; gap: 12px; margin-bottom: 10px; }
+  .tl-step {
+    background: #EAF3DE; border-radius: 10px; padding: 8px;
+    text-align: center; display: flex; flex-direction: column; justify-content: center;
+  }
+  .tl-step-num { font-size: 10px; color: #3B6D11; font-weight: 600; }
+  .tl-step-name { font-size: 18px; font-weight: 700; color: #27500A; }
+  .tl-step-count { font-size: 10px; color: #3B6D11; }
+  .tl-body { background: #fff; border: 1px solid #cdddb8; border-radius: 14px; padding: 0.875rem 1rem; }
+  .tl-dates { font-size: 12px; color: #888; margin-bottom: 6px; }
+  .tl-overview { font-size: 13px; color: #333; margin-bottom: 6px; line-height: 1.5; }
+  .tl-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tl-tag { font-size: 11px; background: #EAF3DE; color: #3B6D11; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+
+  /* info grid */
+  .info-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+  .info-cell { background: #fff; border: 1px solid #cdddb8; border-radius: 14px; padding: 0.875rem 1rem; display: flex; gap: 10px; align-items: flex-start; }
+  .info-cell-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .info-cell-label { font-size: 11px; color: #888; margin-bottom: 2px; }
+  .info-cell-val { font-size: 13px; font-weight: 600; color: #1a1a1a; line-height: 1.5; }
+
+  /* note */
+  .note {
+    background: #f0f7e8; border-radius: 10px;
+    border-left: 4px solid #97C459; padding: 0.875rem 1.25rem; margin-bottom: 1.5rem;
+  }
+  .note p { font-size: 13px; color: #555; line-height: 1.7; }
+
+  /* cta */
+  .cta { border-radius: 16px; overflow: hidden; }
+  .cta-img { width: 100%; display: block; }
+  .cta-body { background: #EAF3DE; padding: 1.5rem; text-align: center; }
+  .cta-free { font-size: 22px; font-weight: 600; color: #27500A; margin-bottom: 4px; }
+  .cta-free span { font-size: 34px; font-weight: 800; color: #3B6D11; }
+  .cta-sub-price { font-size: 13px; color: #639922; margin-bottom: 0.75rem; }
+  .cta-deadline {
+    font-size: 13px; font-weight: 600; color: #27500A;
+    margin-bottom: 1rem; background: #C0DD97;
+    display: inline-block; padding: 5px 18px; border-radius: 999px;
+  }
+  .cta-btn {
+    display: inline-block; background: #3B6D11; color: #EAF3DE;
+    font-size: 16px; font-weight: 700; padding: 14px 40px;
+    border-radius: 999px; border: none; cursor: pointer;
+    font-family: inherit; margin-bottom: 0.875rem; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: #27500A; }
+  .cta-host { font-size: 12px; color: #639922; }
+
+  @media (max-width: 520px) {
+    .merit-grid { grid-template-columns: 1fr; }
+    .info-row { grid-template-columns: 1fr; }
+    .hero-title { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="lp">
+
+  <!-- hero -->
+  <div class="hero">
+    <svg class="hero-img" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ノートパソコンで一緒に学ぶ大学生たちのイラスト">
+      <rect width="680" height="300" fill="#EAF3DE"/>
+      <circle cx="585" cy="55" r="34" fill="#C0DD97"/>
+      <rect x="40" y="60" width="120" height="80" rx="8" fill="#97C459" opacity="0.35"/>
+      <rect x="500" y="180" width="150" height="90" rx="8" fill="#97C459" opacity="0.3"/>
+      <g transform="translate(150,90)">
+        <rect x="-30" y="120" width="240" height="14" rx="4" fill="#639922" opacity="0.4"/>
+        <g>
+          <circle cx="30" cy="40" r="26" fill="#3B6D11"/>
+          <path d="M4 95 Q4 62 30 62 Q56 62 56 95 Z" fill="#639922"/>
+          <rect x="62" y="78" width="70" height="44" rx="4" fill="#27500A"/>
+          <rect x="67" y="83" width="60" height="34" rx="2" fill="#EAF3DE"/>
+          <rect x="72" y="90" width="34" height="4" rx="2" fill="#97C459"/>
+          <rect x="72" y="99" width="48" height="4" rx="2" fill="#C0DD97"/>
+          <rect x="72" y="108" width="26" height="4" rx="2" fill="#C0DD97"/>
+        </g>
+        <g transform="translate(120,8)">
+          <circle cx="40" cy="36" r="24" fill="#639922"/>
+          <path d="M16 88 Q16 58 40 58 Q64 58 64 88 Z" fill="#3B6D11"/>
+          <rect x="-58" y="74" width="66" height="42" rx="4" fill="#27500A"/>
+          <rect x="-53" y="79" width="56" height="32" rx="2" fill="#EAF3DE"/>
+          <rect x="-48" y="86" width="30" height="4" rx="2" fill="#97C459"/>
+          <rect x="-48" y="95" width="44" height="4" rx="2" fill="#C0DD97"/>
+          <rect x="-48" y="104" width="22" height="4" rx="2" fill="#C0DD97"/>
+        </g>
+      </g>
+      <g transform="translate(440,70)">
+        <circle cx="40" cy="40" r="28" fill="#27500A"/>
+        <path d="M8 100 Q8 66 40 66 Q72 66 72 100 Z" fill="#3B6D11"/>
+        <rect x="78" y="84" width="74" height="46" rx="4" fill="#639922"/>
+        <rect x="83" y="89" width="64" height="36" rx="2" fill="#EAF3DE"/>
+        <path d="M95 107 l8 8 l16 -18" stroke="#3B6D11" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="-22" y="118" width="190" height="14" rx="4" fill="#27500A" opacity="0.35"/>
+      </g>
+      <g opacity="0.8">
+        <text x="60" y="245" font-family="monospace" font-size="15" fill="#3B6D11">&lt;/&gt;</text>
+        <text x="300" y="265" font-family="monospace" font-size="13" fill="#639922">{ code }</text>
+      </g>
+    </svg>
+    <div class="hero-body">
+      <span class="hero-free-badge">&#165; 学生は参加費無料</span>
+      <p class="hero-tag">未経験からはじめる</p>
+      <h1 class="hero-title">就活が変わる<br><span class="accent">システム開発講座</span><br>入門・基礎・応用</h1>
+      <p class="hero-catch">地元企業のリアルな声からうまれた<br>インターンシップ体験ができるオリジナル実践講座</p>
+      <div class="hero-points">
+        <span class="hero-point">&#10003; 文理不問</span>
+        <span class="hero-point">&#10003; 完全未経験OK</span>
+        <span class="hero-point">&#10003; 定員20名</span>
+        <span class="hero-point">&#10003; 伴走サポート</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- merit -->
+  <div class="merit-grid">
+    <div class="merit-card">
+      <svg class="merit-thumb" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="無料を表すコインのイラスト">
+        <rect width="220" height="110" fill="#EAF3DE"/>
+        <circle cx="110" cy="55" r="34" fill="#97C459"/>
+        <circle cx="110" cy="55" r="26" fill="#639922"/>
+        <text x="110" y="64" font-size="26" font-weight="bold" fill="#EAF3DE" text-anchor="middle" font-family="sans-serif">&#165;</text>
+        <text x="150" y="40" font-size="20" fill="#3B6D11" font-family="sans-serif">0</text>
+      </svg>
+      <div class="merit-pad">
+        <p class="merit-title">学生は<br>参加費無料</p>
+        <p class="merit-desc">一般3万円が0円。スキルだけ持ち帰れる</p>
+      </div>
+    </div>
+    <div class="merit-card">
+      <svg class="merit-thumb" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="地元企業との連携イラスト">
+        <rect width="220" height="110" fill="#EAF3DE"/>
+        <rect x="60" y="30" width="46" height="60" rx="4" fill="#639922"/>
+        <rect x="114" y="42" width="46" height="48" rx="4" fill="#3B6D11"/>
+        <rect x="70" y="40" width="10" height="10" fill="#EAF3DE"/>
+        <rect x="86" y="40" width="10" height="10" fill="#EAF3DE"/>
+        <rect x="70" y="56" width="10" height="10" fill="#EAF3DE"/>
+        <rect x="86" y="56" width="10" height="10" fill="#EAF3DE"/>
+        <rect x="124" y="52" width="10" height="10" fill="#C0DD97"/>
+        <rect x="140" y="52" width="10" height="10" fill="#C0DD97"/>
+        <rect x="124" y="68" width="10" height="10" fill="#C0DD97"/>
+        <rect x="140" y="68" width="10" height="10" fill="#C0DD97"/>
+      </svg>
+      <div class="merit-pad">
+        <p class="merit-title">地元企業と<br>つながれる</p>
+        <p class="merit-desc">インターン体験で就活の接点が生まれる</p>
+      </div>
+    </div>
+    <div class="merit-card">
+      <svg class="merit-thumb" viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="コード画面のイラスト">
+        <rect width="220" height="110" fill="#EAF3DE"/>
+        <rect x="58" y="24" width="104" height="64" rx="6" fill="#27500A"/>
+        <rect x="64" y="30" width="92" height="52" rx="3" fill="#EAF3DE"/>
+        <rect x="70" y="38" width="30" height="5" rx="2" fill="#639922"/>
+        <rect x="104" y="38" width="20" height="5" rx="2" fill="#97C459"/>
+        <rect x="70" y="50" width="44" height="5" rx="2" fill="#97C459"/>
+        <rect x="70" y="62" width="24" height="5" rx="2" fill="#639922"/>
+        <rect x="98" y="62" width="34" height="5" rx="2" fill="#C0DD97"/>
+        <rect x="92" y="92" width="36" height="6" rx="3" fill="#3B6D11"/>
+      </svg>
+      <div class="merit-pad">
+        <p class="merit-title">実務スキルが<br>身につく</p>
+        <p class="merit-desc">HTML/CSS・JS・PHP・SQLをゼロから</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- curriculum -->
+  <div class="timeline">
+    <p class="section-label">カリキュラム</p>
+
+    <div class="tl-item">
+      <div class="tl-step">
+        <p class="tl-step-num">step 01</p>
+        <p class="tl-step-name">入門</p>
+        <p class="tl-step-count">全3回</p>
+      </div>
+      <div class="tl-body">
+        <p class="tl-dates">&#128197; 7/18（土）・7/23（木）・8/1（土）</p>
+        <p class="tl-overview">ITエンジニアとは・システム設計入門・データベース入門。演習発表＆交流会あり</p>
+        <div class="tl-tags">
+          <span class="tl-tag">IT概論</span>
+          <span class="tl-tag">システム設計</span>
+          <span class="tl-tag">DB入門</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-step">
+        <p class="tl-step-num">step 02</p>
+        <p class="tl-step-name">基礎</p>
+        <p class="tl-step-count">全6回</p>
+      </div>
+      <div class="tl-body">
+        <p class="tl-dates">&#128197; 8/8〜9/19（土・木）</p>
+        <p class="tl-overview">サーバ環境構築・動的サイト構築・データベース構築基礎。演習発表＆交流会あり</p>
+        <div class="tl-tags">
+          <span class="tl-tag">HTML/CSS</span>
+          <span class="tl-tag">JavaScript</span>
+          <span class="tl-tag">Web基礎</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-step">
+        <p class="tl-step-num">step 03</p>
+        <p class="tl-step-name">応用</p>
+        <p class="tl-step-count">全7回</p>
+      </div>
+      <div class="tl-body">
+        <p class="tl-dates">&#128197; 9/26〜11/7（土・木）</p>
+        <p class="tl-overview">Java体験・ドキュメント制作・データベース構築応用。演習発表＆交流会あり</p>
+        <div class="tl-tags">
+          <span class="tl-tag">PHP応用</span>
+          <span class="tl-tag">SQL応用</span>
+          <span class="tl-tag">JS応用</span>
+          <span class="tl-tag">Java体験</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- info -->
+  <div class="info-row">
+    <div class="info-cell">
+      <span class="info-cell-icon">&#128336;</span>
+      <div>
+        <p class="info-cell-label">時間</p>
+        <p class="info-cell-val">土曜 10:30〜17:00<br>木曜 19:30〜21:30</p>
+      </div>
+    </div>
+    <div class="info-cell">
+      <span class="info-cell-icon">&#128205;</span>
+      <div>
+        <p class="info-cell-label">会場</p>
+        <p class="info-cell-val">情報通信交流館<br>（e-とぴあ・かがわ）</p>
+      </div>
+    </div>
+    <div class="info-cell">
+      <span class="info-cell-icon">&#128187;</span>
+      <div>
+        <p class="info-cell-label">持ち物</p>
+        <p class="info-cell-val">自分のPC（必須）</p>
+      </div>
+    </div>
+    <div class="info-cell">
+      <span class="info-cell-icon">&#128101;</span>
+      <div>
+        <p class="info-cell-label">定員 / 対象</p>
+        <p class="info-cell-val">20名／文理不問<br>県内就職希望者歓迎</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- note -->
+  <div class="note">
+    <p>講座修了後は「システム開発講座＜実践＞」に参加可能。協力企業から提供されるリアルな課題に挑戦でき、就活のポートフォリオにもなります。講師・スタッフが疑問やキャリア相談に最後まで伴走します。</p>
+  </div>
+
+  <!-- cta -->
+  <div class="cta">
+    <svg class="cta-img" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="仲間と学ぶ学生たちのイラスト">
+      <rect width="680" height="120" fill="#C0DD97"/>
+      <g transform="translate(0,18)">
+        <circle cx="230" cy="40" r="20" fill="#3B6D11"/><path d="M208 88 Q208 60 230 60 Q252 60 252 88 Z" fill="#639922"/>
+        <circle cx="300" cy="36" r="22" fill="#27500A"/><path d="M276 90 Q276 60 300 60 Q324 60 324 90 Z" fill="#3B6D11"/>
+        <circle cx="372" cy="40" r="20" fill="#639922"/><path d="M350 88 Q350 60 372 60 Q394 60 394 88 Z" fill="#27500A"/>
+        <circle cx="440" cy="36" r="22" fill="#3B6D11"/><path d="M416 90 Q416 60 440 60 Q464 60 464 90 Z" fill="#639922"/>
+      </g>
+    </svg>
+    <div class="cta-body">
+      <p class="cta-free">学生参加費 <span>無料</span></p>
+      <p class="cta-sub-price">一般参加費：30,000円（税込）</p>
+      <p class="cta-deadline">&#128197; 申込締切 2026年6月30日（火）23:59</p>
+      <br>
+      <a href="#" class="cta-btn">詳細・お申し込みはこちら &rarr;</a>
+      <p class="cta-host">主催：情報通信交流館（Setouchi-i-Base）</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
